@@ -1,0 +1,11 @@
+{
+  "date": {
+    "placeholder": "Date",
+    "id": "transaction_date",
+    "name": "transaction_date",
+    "input_type": "input",
+    "required": true,
+    "max": null,
+    "onSubmit": false
+  },
+}
