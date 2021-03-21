@@ -28,41 +28,44 @@ class PaymentDetails extends React.Component{
     }
 
     render() {
-        let i = 0, mode_of_payments = [], mode_of_payments2 = [];
+        let i = 0, mop_amt = "", mode_of_payments = [], mode_of_payments2 = [];
         for (i = 0; i < this.MODE_OF_PAYMENT.length; i++) {
             mode_of_payments.push(
                 <input
                     type="radio"
                     id={this.MODE_OF_PAYMENT[i]}
+                    key={this.MODE_OF_PAYMENT[i]}
                     name="MODE_OF_PAYMENT"
                     value={this.MODE_OF_PAYMENT[i]}
                 />
             );
             mode_of_payments.push(
-                <label for={this.MODE_OF_PAYMENT[i]}>
+                <label htmlFor={this.MODE_OF_PAYMENT[i]}>
                     {this.MODE_OF_PAYMENT[i]}
                 </label>
             );
             mode_of_payments.push(<br />);
         }
         for (i = 0; i < this.MODE_OF_PAYMENT.length; i++) {
+            mop_amt = this.MODE_OF_PAYMENT[i]+"_amt";
             mode_of_payments2.push(
-                <label for={this.MODE_OF_PAYMENT[i]}>
+                <label htmlFor={mop_amt}>
                     {this.MODE_OF_PAYMENT[i]}
                 </label>
             );
             mode_of_payments2.push(
                 <input
                     type="text"
-                    id={this.MODE_OF_PAYMENT[i]}
-                    name={this.MODE_OF_PAYMENT[i]}
+                    id={mop_amt}
+                    key={mop_amt}
+                    name={mop_amt}
                 />
             );
             mode_of_payments2.push(<br />);
         }
         return (
             <div name="mode_of_payment">
-                <label>Mode of Payment</label><br />
+                <h3>Mode of Payment</h3><br />
                 {mode_of_payments}<br />
                 <label htmlFor="total_amount_paid">Total Amount Paid</label>
                 <input type="text" id="total_amount_paid" name="total_amount_paid" /><br />

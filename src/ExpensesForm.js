@@ -23,7 +23,6 @@ class ExpensesForm extends React.Component{
 
     render() {
         let i = 0, expenses_categories = [], category = null;
-
         for (i = 0; i < this.EXPENSES_CATEGORY.length; i++) {
             expenses_categories.push(
                 <input
@@ -34,28 +33,28 @@ class ExpensesForm extends React.Component{
                     onClick={() => this.setState({
                         expenses_category: this.EXPENSES_CATEGORY[i]
                     })}
-                    required="True"
+                    required={true}
                 />
             )
             expenses_categories.push(
-                <label for={this.EXPENSES_CATEGORY[i]}>
+                <label htmlFor={this.EXPENSES_CATEGORY[i]}>
                     {this.EXPENSES_CATEGORY[i]}
                 </label>
             )
             expenses_categories.push(<br />)
         }
 
-        if(this.state.expenses_category == 'Savings') {
+        if(this.state.expenses_category === "Savings") {
             category = <SavingsForm />
-        }else if(this.state.expenses_category == 'Adulting') {
+        }else if(this.state.expenses_category === "Adulting") {
             category = <AdultingForm />
         }
         return (
-          <div name="expenses_form">
-              <label >Expenses Category: </label><br />
+          <div name="expenseForm">
+              <h3>Expenses Category: </h3><br />
               {expenses_categories}<br />
               <input type="radio" name="refund_transaction" value="True"/>
-              <label>Refund Transaction </label><br />
+              <label htmlFor="refund_transaction">Refund Transaction </label><br />
 
               {category}
           </div>

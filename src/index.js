@@ -12,7 +12,13 @@ class FinancialTracker extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            transaction_type: null
+            transactionType: null,
+            expensesType: null,
+            savingsType: null,
+            adultingType: null,
+            isExpense: false,
+            isIncome: false,
+            isTransfer: false
 
 
         }
@@ -20,35 +26,46 @@ class FinancialTracker extends React.Component{
 
     render(){
         let transaction = null;
-        if(this.state.transaction_type === 'Expense'){
+        if(this.state.transactionType === 'Expense'){
             transaction = <ExpensesForm />
         }
-        else if(this.state.transaction_type === 'Income'){
+        else if(this.state.transactionType === 'Income'){
+            transaction = <SavingsForm />
+        }
+        else if(this.state.transactionType === 'Transfer'){
             transaction = <AdultingForm />
         }
         return(
             <div>
-                <form method="get" name="FinancialTracker">
-                    <input type="date" defaultValue={Date.now()} max={Date.now()}/>
-                    <br />
-                    <button name="transaction_type"
-                            onClick={() => this.setState({
-                                transaction_type: 'Expense'
-                            })}
-                    >Expense</button>
-                    <button name="transaction_type"
-                            onClick={() => this.setState({
-                                transaction_type: 'Income'
-                            })}
-                    >Income</button>
-                    <button name="transaction_type"
-                            onClick={() => this.setState({
-                                transaction_type: 'Transfer'
-                            })}
-                    >Transfer</button>
+                <input type="date" defaultValue={Date.now()} max={Date.now()}/>
+                <br />
+                <button name="transactionType"
+                        onClick={() => this.setState({
+                            transactionType: "Expense",
+                            isExpense: true,
+                            isIncome: false,
+                            isTransfer: false
+                        })}
+                >Expense</button>
+                <button name="transactionType"
+                        onClick={() => this.setState({
+                            transactionType: "Income",
+                            isExpense: false,
+                            isIncome: true,
+                            isTransfer: false
+                        })}
+                >Income</button>
+                <button name="transactionType"
+                        onClick={() => this.setState({
+                            transactionType: "Transfer",
+                            isExpense: false,
+                            isIncome: false,
+                            isTransfer: true
+                        })}
+                >Transfer</button>
 
-                    {transaction}
-                </form>
+                {transaction}
+                <PaymentDetails />
             </div>
 
         );

@@ -29,12 +29,13 @@ class AdultingForm extends React.Component{
                 <input
                     type="radio"
                     id={this.ADULTING_CATEGORY[i]}
+                    key={this.ADULTING_CATEGORY[i]}
                     name="adulting_category"
                     value={this.ADULTING_CATEGORY[i]}
                 />
             )
             adulting_categories.push(
-                <label for={this.ADULTING_CATEGORY[i]}>
+                <label htmlFor={this.ADULTING_CATEGORY[i]}>
                     {this.ADULTING_CATEGORY[i]}
                 </label>
             )
@@ -42,7 +43,7 @@ class AdultingForm extends React.Component{
         }
         return (
             <div name="adulting_form">
-                <label >Adulting Category: </label><br />
+                <h3 >Adulting Category: </h3><br />
                 {adulting_categories}<br />
             </div>
         );

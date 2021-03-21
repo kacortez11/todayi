@@ -21,12 +21,13 @@ class SavingsForm extends React.Component{
                 <input
                     type="radio"
                     id={this.SAVINGS_CATEGORY[i]}
-                    name="expenses_category"
+                    key={this.SAVINGS_CATEGORY[i]}
+                    name="savings_category"
                     value={this.SAVINGS_CATEGORY[i]}
                 />
             )
             savings_categories.push(
-                <label for={this.SAVINGS_CATEGORY[i]}>
+                <label htmlFor={this.SAVINGS_CATEGORY[i]}>
                     {this.SAVINGS_CATEGORY[i]}
                 </label>
             )
@@ -34,7 +35,7 @@ class SavingsForm extends React.Component{
         }
         return (
             <div name="expenses_form">
-                <label >Savings Category: </label><br />
+                <h3>Savings Category: </h3><br />
                 {savings_categories}<br />
             </div>
         );
